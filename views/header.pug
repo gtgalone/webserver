@@ -1,0 +1,15 @@
+div.header
+    script
+        include ../public/js/typing.js
+    if path=='/about'
+        div i am..
+            span.txt-rotate(data-period='1500' data-rotate=['Full-stack','Web Developer','GTG alone'])
+    else if path=='/portfolio'
+        div
+            span.txt-rotate(data-period='1500' data-rotate=['Portfolio is','not prepared','Coming soon'])
+    else if path=='/posts'
+        div
+            span.txt-rotate(data-period='1500' data-rotate=['Want a Website. ?','Write here','or Call me','010-3668-8512'])
+    else
+        div
+            span.txt-rotate(data-period='1500' data-rotate=['홈페이지 제작해요','유지보수해요','전화주세요','010-3668-8512'])

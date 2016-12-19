@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+    meta(http-equiv='Page-Enter' content='blendTrans(Duration=0.0)')
+    meta(http-equiv='Page-Exit' content='blendTrans(Duration=0.0)')
+    meta(name='keywords' content='제주도홈페이지제작, 웹사이트제작, 홈페이지유지보수, 웹사이트유지보수, 제주도 website 제작, 제주도 홈페이지 유지보수, 모바일 홈페이지제작, 모바일웹 제작')
+    meta(name='description' content='제주도홈페이지제작, 제주도 반응형 홈페이지 제작, 제주도 모바일 웹제작, 제주도 모바일 홈페이지 제작')
+    meta(name='author' content='GTGalone')
+    meta(property='og:type' content='website')
+    meta(property='og:title' content='제주도홈페이지제작')
+    meta(property='og:description' content='홈페이지 제작 문의 환영합니다')
+    link(href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" rel="stylesheet" type="text/css")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+    link(href="http://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet" type="text/css")
+    script(src="https://fb.me/react-15.0.0.js")
+    script(src="https://fb.me/react-dom-15.0.0.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js")
+    style
+      include ../public/css/style.css
+    block title
+      title 제주도홈페이지제작 GTGalone
+  body
+    nav
+      include nav
+    header
+      include header
+    main
+      block content
+    aside
+      include aside
+    footer
+      include footer
+    script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
+    script
+      include ../public/js/script.js

@@ -1,0 +1,56 @@
+extends ../layout.pug
+block content
+  div.container.signup
+    form.user-form.form-horizontal(action='/users' method='post')
+      div.contentBox
+        h3.contentBoxTop 회원가입
+        hr
+        fieldset
+          div.form-group(class=errors.username ? 'has-error' : '')
+            label.col-sm-4.control-label(for='username') *아이디
+            div.col-sm-8
+              input#username.form-control(type='text' name='username' autofocus value=user.username)
+              - if(errors.username){
+                span.help-block #{errors.username.message}
+              - }
+
+          div.form-group(class=errors.name ? 'has-error' : '')
+            label.col-sm-4.control-label(for='name') *별명
+            div.col-sm-8
+              input#name.form-control(type='text' name='name' value=user.name)
+              - if(errors.name){
+                span.help-block #{errors.name.message}
+              - }
+
+          div.form-group(class=errors.email ? 'has-error' : '')
+            label.col-sm-4.control-label(for='email') 이메일
+            div.col-sm-8
+              input#email.form-control(type='email' name='email' value=user.email)
+              - if(errors.email){
+                span.help-block #{errors.email.message}
+              - }
+
+          div.form-group(class=errors.password ? 'has-error' : '')
+            label.col-sm-4.control-label(for='password') *비밀번호
+            div.col-sm-8
+              input#password.form-control(type='password' name='password' required value='')
+              - if(errors.password){
+                span.help-block #{errors.password.message}
+              - }
+
+          div.form-group(class=errors.passwordConfirmation ? 'has-error' : '')
+            label.col-sm-4.control-label(for='passwordConfirmation') *비밀번호 확인
+            div.col-sm-8
+              input#passwordConfirmation.form-control(type='password' name='passwordConfirmation' value='')
+              - if(errors.passwordConfirmation){
+                span.help-block #{errors.passwordConfirmation.message}
+              - }
+          p
+            small * 표시는 필수 입력사항입니다.
+      div.buttons
+        button.btn.btn-default(type='submit') 완료
+
+      - if(errors.unhandled){
+        div.alert.alert-danger
+          #{errors.unhandled.message}
+      - }

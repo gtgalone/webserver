@@ -1,0 +1,93 @@
+extends ../layout.pug
+block content
+  div.container
+    div.post.post-index
+      hr
+      table.table.table-striped.posts
+
+        thead
+          tr
+            - if(isAuthenticated){
+            - if( user.username == 'admin'){
+            th.checkBox
+              input(type='checkbox' onClick='javascript:checkAll()')
+            - }
+            - }
+            th.number 번호
+            th.title 제목
+            th.author 이름
+            th.date 등록일
+            //- th.count 조회
+
+        tbody
+        - if(data == null || data.length == 0) {
+          tr
+            td.noDate(colspan=100) 첫 글을 남겨보세요 ^^
+        - } else {
+
+        //- if(!perPage){
+        - var perPage = parseInt(10)
+        //- }
+
+        - var page = parseInt(pageQuery)*parseInt(10)-parseInt(10)
+
+        - var total = data.length%perPage
+        - if (total==0){
+          - var pageView = perPage
+        - } else {
+          - var pageView = total
+        - }
+
+        - for(i=page;i<perPage+page;i++){
+          tr
+            - if(isAuthenticated){
+            - if( user.username == 'admin'){
+            td.checkBox.col-sm-1
+              input(type='checkbox' name='checkPost' value=data[i]._id)
+            - }
+            - }
+
+            td.number.col-sm-1
+              span #{data.length-data.indexOf(data[i])}
+            td.title.col-sm-5
+              a(href='/posts/'+data[i]._id)
+                span #{data[i].title}
+
+            td.author.col-sm-2
+              span #{data[i].author}
+
+            td.date.col-sm-3
+              span #{data[i].createdAt.toLocaleDateString()}
+            // td.count.col-sm-1
+            //   span 123
+
+          - if(data.indexOf(data[i])==data.length-1){
+          -  break
+          - }
+
+        - }
+        - }
+      hr
+      div.buttons
+        - if(isAuthenticated){
+        - if(user.username == 'admin'){
+        a.btn.btn-default(href='javascript:deleteChk()') 선택삭제
+        - }
+        - }
+
+        a.btn.btn-default(href='/posts/new') 글쓰기
+      nav(aria-label='Page navigation')
+      - var back = parseInt(pageQuery)-parseInt(1)
+      - var go = parseInt(pageQuery)+parseInt(1)
+        ul.pagination
+          li
+            a(href=pageQuery==1?"#":'/posts?page='+back, aria-label='Previous')
+              span(aria-hidden='true') &laquo;
+          - var paginationNum = Math.ceil(data.length/perPage)
+          - for(var i=1;i<=paginationNum;i++){
+            li(class=pageQuery==i?'active':'')
+              a(href='/posts?page='+i) #{i}
+          - }
+          li
+            a(href=pageQuery==paginationNum?'#':'/posts?page='+go, aria-label='previous')
+              span(aria-hidden='true') &raquo;

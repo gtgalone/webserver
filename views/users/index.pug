@@ -1,0 +1,13 @@
+extends ../layout.pug
+block content
+  div.container.user.user-index
+    div.contentBox
+      h3.contentBoxTop Users
+        ul.floats
+        - if(users == null || users.length == 0){
+          div.noData(colspan=100) There is no user yet.
+        - }
+        - users.forEach(function(user) {
+          li
+            a(href="/users/"+user.username) #{user.username}
+        - })

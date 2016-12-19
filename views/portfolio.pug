@@ -1,0 +1,10 @@
+extends ./layout.pug
+block content
+  div#postView.postView
+      div.fullIframe
+          iframe(src="http://www.gtgalone.tk" width="100%" height="100%" frameborder="0") 이 브라우저는 iframe을 지원하지 않습니다 브라우저를 업데이트 해주세요
+      a(onClick="")
+        i.material-icons(onClick="exitView()") &#xE14C;
+  div.portlist
+      iframe(src="http://www.gtgalone.tk" width="100%" height="750" frameborder="0") 이 브라우저는 iframe을 지원하지 않습니다 브라우저를 업데이트 해주세요
+        div.caption 방문자들이 간단한 메모를 남길수 있는 <br /> 무한 스크롤형 메모장입니다. <a onClick="onView()" target="_blank"><small> 크게보기</small></a><br/><small>(Reactjs, MaterialCSS 사용)</small>

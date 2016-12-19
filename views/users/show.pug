@@ -1,0 +1,23 @@
+extends ../layout.pug
+block content
+  div.container.user.user-show
+    hr
+    form.user-form.form-horizontal(action='/users' method='post')
+      div.contentBox
+        h3.contentBoxTop #{user.username}
+        fieldset(disabled)
+          div.form-group
+            label.col-sm-3(for='name') Name
+            div.col-sm-9
+              input#name.form-control(type='text' name='name' value=user.name)
+
+          div.form-group
+            label.col-sm-3(for='email') Email
+            div.col-sm-9
+              input#email.form-control(type='text' name='email' value=user.email)
+      hr
+      div.buttons
+      - if(!user.provider){
+        a.btn.btn-default(href='/users/'+user.username+'/edit') Edit
+      - }
+        a.btn.btn-default(href='javascript:history.back()') Back        

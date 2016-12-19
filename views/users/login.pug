@@ -1,0 +1,50 @@
+extends ../layout.pug
+block content
+  div.container.login
+    form.login-form.form-horizontal(action='/login' method='post')
+      div.contentBox
+        h3.contentBoxTop 로그인
+        br
+
+        fieldset
+          div.form-group(class=errors.username?'has-error':'')
+            label.col-sm-4.control-label(for='username') 아이디
+            div.col-sm-8
+              input#username.form-control(type='text' name='username' value=username autofocus=!errors.loginp&&errors.loginu||!errors.loginu&&!errors.loginp)
+              - if(errors.username){
+                span.help-block #{errors.username}
+              - }
+
+          div.form-group(class=errors.password?'has-error':'')
+            label.col-sm-4.control-label(for='password') 비밀번호
+            div.col-sm-8
+              input#password.form-control(type='password' name='password' value='' autofocus=errors.loginp)
+              - if(errors.password){
+                span.help-block #{errors.password}
+              - }
+
+          - if(errors.loginu){
+            div.has-error
+              span.help-block #{errors.loginu}
+          - }
+          - if(errors.loginp){
+            div.has-error
+              span.help-block #{errors.loginp}
+          - }
+
+      div.buttons
+        input.btn.btn-default(type='submit' value='로그인')
+      hr
+      div.buttons
+        span 처음이세요? &nbsp;
+            a(href='/users/new') 회원가입
+      hr
+
+      div.authLogin
+          div.facebookLogin
+              a(href="/auth/facebook")
+                  p Facebook 로그인
+
+          div.googleLogin
+              a(href="/auth/google")
+                  p Google+ 로그인

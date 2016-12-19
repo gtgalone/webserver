@@ -1,0 +1,63 @@
+
+div.navbar-custom
+
+  div.menu-mobile
+    - if(isAuthenticated){
+    a(href='/logout')
+        div.button.login
+          ul.icon1-2 <i class="material-icons">&#xE88D;</i>
+            li Logout
+    - } else {
+    a(href='/login')
+        div.button.login
+          ul.icon1 <i class="material-icons">&#xE0DA;</i>
+            li Login
+    - }
+    a(href='/about')
+      div.button.about
+        ul.icon2 <i class="material-icons">&#xE851;</i>
+          li About
+    a(href='/portfolio')
+      div.button.portf
+        ul.icon3 <i class="material-icons">&#xE562;</i>
+          li Portfolio
+    a(href='/posts?page=1')
+      div.button.posts
+        ul.icon4 <i class="material-icons">&#xE0C9;</i>
+          li 제작,수정문의
+
+  div.nav-top.header
+
+    div.navbar-brand
+      a(href='/') GTG alone
+
+    div.menu
+      ul.menu-center
+        li
+          a(href='/about') About
+        li
+          a(href='/portfolio') 포트폴리오
+        li
+          a(href='/posts?page=1') 홈페이지 제작,수정문의
+
+
+
+      ul.menu-right
+        - if(isAuthenticated){
+        - if(user.username){
+        li
+          a(href='/users/'+user.username) 내 정보
+        - }
+        li
+          a(href='/logout') 로그아웃
+        - } else {
+        li
+          a(href='/users/new') 회원가입
+        li
+          a(href='/login') 로그인
+        - }
+    div.icon
+      a(href="/auth/facebook")
+        span Facebook Login
+      a(href="/auth/google")
+        span Google+ Login

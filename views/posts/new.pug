@@ -1,0 +1,55 @@
+extends ../layout.pug
+block content
+  div.container
+    div.post.post-new
+      div.buttons
+        a.btn.btn-default(href='javascript:history.back()') 뒤로
+
+      form.post-form.form-horizontal(action='/posts' method='post')
+        div.contentBox
+          h4.contentBoxTop 제작문의 / 수정의뢰
+          hr
+
+          fieldset
+            div.form-group(class=errors.author?'has-error':'')
+              label.col-sm-2.control-label(for='author') 이름
+              div.col-sm-10
+                input#author.form-control(type='text' name='author' value=user?user.name:'')
+                - if(errors.author) {
+                  span.help-block #{errors.author.message}
+                - }
+
+            div.form-group(class=errors.title?'has-error':'')
+              label.col-sm-2.control-label(for='title') 제목
+              div.col-sm-10
+                input#title.form-control(type='text' name='title' value=post.title)
+                - if(errors.title) {
+                  span.help-block #{errors.title.message}
+                - }
+
+            div.form-group(class=errors.body?'has-error':'')
+              label.col-sm-2.control-label(for='body') 내용
+              div.col-sm-10
+                textarea#body.form-control(type='text' name='body' rows='12') #{post.body}
+                - if(errors.body) {
+                  span.help-block #{errors.body.message}
+                - }
+
+            div.form-group(class=errors.phone?'has-error':'')
+              label.col-sm-2.control-label(for='phone') 연락처
+              div.col-sm-10
+                input#phone.form-control(type='text' name='phone' placeholder="전화번호 또는 이메일주소" value=post.phone)
+                span <small>연락처는 공개되지 않습니다.</small>
+                - if(errors.phone) {
+                  span.help-block #{errors.phone.message}
+                - }
+
+
+                input#id(type='hidden' name='username' value=user?user.username:'')
+        hr
+        div.buttons
+          button.btn.btn-default(type='submit') 완료
+        - if(errors.unhandled) {
+          div.alert.alert-danger
+            #{errors.unhandled.message}
+        - }
